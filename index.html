@@ -86,6 +86,8 @@
       padding: 12px;
       backdrop-filter: blur(8px);
       transition: 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .newDiv:hover{
@@ -94,10 +96,13 @@
 
     p{
       color: white;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-top: 10px;
+      margin: 6px 0;
       text-align: center;
+    }
+
+    .movieTitle{
+      font-size: 1.1rem;
+      font-weight: bold;
     }
 
     img{
@@ -137,7 +142,7 @@
 
     search.addEventListener("click", ()=>{
       getMovie();
-    })
+    });
 
     async function getMovie (){
       displayMovie.innerHTML = "";
@@ -155,15 +160,33 @@
 
         const pTag = document.createElement("p");
         pTag.textContent = movie.title;
+        pTag.className = "movieTitle";
+
+        const rateP = document.createElement("p");
+        rateP.textContent = `⭐${movie.vote_average.toFixed(1)}`;
+        rateP.className = "rating";
+
+        const yearP = document.createElement("p");
+        yearP.textContent = movie.release_date? movie.release_date.slice(0,4) : "N/A";
+        yearP.className = "year";
 
         newDiv.appendChild(img);
         newDiv.appendChild(pTag);
-
+        newDiv.appendChild(rateP);
+        newDiv.appendChild(yearP);
+        
         displayMovie.appendChild(newDiv);
       });
 
       console.log(data);
+      input.value = "";
     }
+
+    input.addEventListener("keydown", (event)=>{
+      if(event.key==="Enter"){
+        search.click();
+      }
+    });
 
   </script>
 </body>
