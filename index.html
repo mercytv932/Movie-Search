@@ -163,7 +163,10 @@
 
 
 header{
-  background-color: #002f93;
+  background: linear-gradient(to right, #000814, #001d3d, #003566, #001d3d, #000814);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
   padding: 20px 20px;
 }
     
@@ -190,11 +193,86 @@ header{
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar a:hover{
+  color: white;
+  text-shadow: 
+  0 0 8px rgba(255,255,255,0.7), 
+  0 0 20px rgba(59,130,246,0.8);
+
+  transform: translateY(-2px);
+}
+
+.navbar a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #60a5fa;
+  transition: 0.3s;
+}
+
+.navbar a:hover::after{
+  width: 100%;
 }
 
 
+@media (max-width: 768px){
+  .navbar{
+    padding: 16px 20px;
+  }
 
+  .navLinks{
+    gap: 18px;
+  }
 
+  .container{
+    max-width: 400px;
+  }
+
+  #displayMovie{
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .errorText{
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px){
+  .navbar{
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navLinks{
+    gap: 14px;
+  }
+
+  .container{
+    flex-direction: column;
+    max-width: 300px;
+    padding: 14px;
+  }
+
+  input{
+    width: 100%;
+  }
+
+  #displayMovie{
+    grid-template-columns: 1fr;
+  }
+
+  .errorText{
+    font-size: 2.2rem;
+    text-align: center;
+  }
+}
   </style>
 </head>
 <body>
@@ -202,6 +280,7 @@ header{
   <header>
     <nav class="navbar">
       <h1>Movies Galore</h1>
+      
       <div class="navLinks">
       <a href="#">Home</a>
       <a href="#">Movies</a>
@@ -284,7 +363,6 @@ header{
   }
 
     function displayError(){
-
         const errorDiv = document.createElement("div");
         errorDiv.className = "errorContainer";
 
