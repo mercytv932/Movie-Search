@@ -28,7 +28,7 @@
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
       max-width: 500px;
       margin: 10px auto;
-      padding: 20px;
+      padding: 10px 15px;
 
       position: sticky;
       top: 0;
@@ -162,11 +162,53 @@
     }
 
 
+header{
+  background-color: #002f93;
+  padding: 20px 20px;
+}
+    
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.navbar h1{
+  color: white;
+  margin: 0;
+}
+
+.navLinks{
+  display: flex;
+  gap: 35px;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+
+
 
   </style>
 </head>
 <body>
-    <h1>Movies Galore</h1>
+
+  <header>
+    <nav class="navbar">
+      <h1>Movies Galore</h1>
+      <div class="navLinks">
+      <a href="#">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">More</a>
+      </div>
+    </nav>
+  </header>
   <div>
 
   <div class="container">
@@ -252,7 +294,6 @@
 
         errorDiv.appendChild(errorP);
         document.body.append(errorDiv);
-        // displayMovie.appendChild(errorDiv);
     }
 
     input.addEventListener("keydown", (event)=>{
