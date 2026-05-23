@@ -333,10 +333,13 @@ header{
 
       input.value = "";
 
-      renderMovies(data.results);
+      renderMovies(data.results);////take all the movies we got and display them on the page.
   }
      
-       function renderMovies(results){
+
+       
+         //show movies on the page
+       function renderMovies(results){ 
         results.forEach(movie =>{
 
         if(!movie.poster_path) return;
@@ -387,6 +390,8 @@ header{
     }
 
 
+    
+       //get trending movies automatically
 
     async function getTrendingMovies(){
       const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=bfabd8f0e8dea4256f4c422c45990456`);
